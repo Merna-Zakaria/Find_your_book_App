@@ -1,15 +1,20 @@
-import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import Home from './pages/home';
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import Routes from "./routes";
+import "./App.css";
 
 function App() {
   return (
-    <div className="">
-      <BrowserRouter>
-         <Route path='/' component={Home} />
-      </BrowserRouter>
-   
+    <div className="appWrapper">
+      <Routes />
     </div>
+
+    //another way: using useRoutes() hooks t handle routes
+    // <div className="appWrapper">
+    //   <Router>
+    //     <Routes />
+    //   </Router>
+    // </div>
   );
 }
 

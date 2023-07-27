@@ -1,24 +1,33 @@
-import React from 'react';
-import { Navbar, Button, Nav } from 'react-bootstrap';
+import React from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import logo from "../assets/images/logo.jpg";
+import { Link } from 'react-router-dom';
 
-class Header extends React.Component {
+function BasicExample() {
+  return (
+    <Navbar expand="lg" className="bg-body-tertiary mb-4">
+      <Container>
+        <Navbar.Brand href="/">
+          <img src={logo} alt="logo" width={80} height={80} />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Link to="/" className="px-2">Home</Link>
+            <Link to="/favorite" className="px-2">Favoite</Link>
+            <Link to="/link" className="px-2">About</Link>
+          </Nav>
+          <Link to="/login">
+          <button type="button" className="btn btn-info">
+            Login
+          </button>
+          </Link>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
 
-    render () {
-        return (
-            <div className='mb-5'>
-                {/* {this.renderHeader()} */}
-                <Navbar bg="primary" variant="dark">
-                <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#features">Features</Nav.Link>
-                    <Nav.Link href="#pricing">Pricing</Nav.Link>
-                </Nav>
-                <Button variant="outline-light" onClick={this.onSubmit}>Login</Button>
-            </Navbar>
-            </div>
-        )
-    }
-};
-
-export default Header;
+export default BasicExample;

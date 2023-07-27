@@ -1,7 +1,7 @@
 // import { reducer as formReducer } from 'redux-form';
 import { combineReducers } from 'redux';
-import reducers from './reducers';
+import Books from './books';
 
 export default combineReducers ({
-    searchResult : reducers
+    data : Books,
 });
