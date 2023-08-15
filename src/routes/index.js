@@ -5,28 +5,43 @@ import {
   useRoutes,
 } from "react-router-dom";
 import Home from "../pages/home";
+import About from "../pages/about";
 import Login from "../pages/login";
-import Favorite from "../pages/favourite";
+import Profile from "../pages/profile";
 import NoMatch from "../sharedComponents/noMatch";
 import BooksList from "../sharedComponents/booksList";
 import BookDetails from "../pages/bookDetails";
-import ProtectedRoute from "./protectedRoutes"
+import ProtectedRoute from "./protectedRoutes";
+import AuthLayout from "../layout/authLayout";
 
 const AppRoutes = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} exact />
-        <Route path="/" element={<Home />}>
-          <Route index element={<BooksList />} />
-          <Route path=":bookId" element={<BookDetails />} />
-          <Route path="/favorite" element={<Favorite />} />
-
-          {/* <Route path="/:bookId" element={<ProtectedRoute><BookDetails/></ProtectedRoute>} />
-          <Route path="/favorite" element={<ProtectedRoute><Favorite/></ProtectedRoute>} /> */}
-
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<Login />} exact />
+          <Route path="/" element={<Home />}>
+            <Route index element={<BooksList />} />
+            <Route path="/about" element={<About />} />
+            <Route
+              path="/:bookId"
+              element={
+                <ProtectedRoute>
+                  <BookDetails />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
+          <Route path="*" element={<NoMatch />} />
         </Route>
-        <Route path="*" element={<NoMatch />} />
       </Routes>
     </Router>
   );

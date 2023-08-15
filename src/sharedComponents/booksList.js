@@ -14,7 +14,7 @@ const BooksList = () => {
     dispatch(onGetBooksGeneralList("business+subject:juvenile+fiction"));
   }, []);
 
-  console.log("BooksList", searchResult);
+  // console.log("BooksList", searchResult);
   return (
     <>
       <SearchBar />

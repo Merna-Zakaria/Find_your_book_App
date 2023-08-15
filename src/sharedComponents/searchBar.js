@@ -14,7 +14,7 @@ class SearchBar extends React.Component {
   getSearchResult = (value, e) => {
     e.preventDefault();
     this.props.onFetchSearchResult(value);
-    console.log(value, this.props);
+    // console.log(value, this.props);
   };
 
   handleChange = (e) => {
@@ -22,7 +22,7 @@ class SearchBar extends React.Component {
   };
 
   render() {
-    console.log(this.state.searchBox, this.props.searchResult);
+    // console.log(this.state.searchBox, this.props.searchResult);
     return (
       <div className="container bg-light row p-4 m-auto">
         <h3 className="col-7">Welcome to your library</h3>

@@ -13,7 +13,7 @@ function* FetchSearchResult(action) {
   const { searchValue } = action;
   try {
     const response = yield call(api.fetchSearchResult, searchValue);
-    console.log("saga response", response.data.items);
+    // console.log("saga response", response.data.items);
     yield put({ type: FETCH_SEARCH_RESULT, payload: response.data.items });
   } catch (err) {
     console.log(err);
@@ -24,7 +24,7 @@ function* GetBooksGeneralList(action) {
   const { booksType } = action;
   try {
     const response = yield call(api.fetchBooksGeneralList, booksType);
-    console.log("saga response", response.data.items);
+    // console.log("saga response", response.data.items);
     yield put({ type: GET_BOOKS_GENERAL_LIST, payload: response.data.items });
   } catch (err) {
     console.log(err);
