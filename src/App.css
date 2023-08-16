@@ -17,3 +17,12 @@ a {
 .blueBg{
   background-color: #effafc;
 }
+.cursorPointer {
+  cursor: pointer;
+}
+.profileImg {
+  height: 100% !important;
+}
+.lightText {
+  color: darkgrey;
+}
