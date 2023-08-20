@@ -25,11 +25,7 @@ const AppRoutes = () => {
             <Route path="/about" element={<About />} />
             <Route
               path="/:bookId"
-              element={
-                <ProtectedRoute>
-                  <BookDetails />
-                </ProtectedRoute>
-              }
+              element={<BookDetails />}
             />
             <Route
               path="/profile"

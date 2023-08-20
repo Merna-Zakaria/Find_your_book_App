@@ -1,6 +1,6 @@
 import {
     FETCH_SEARCH_RESULT_SAGA,
-    SINGLE_BOOK,
+    SINGLE_BOOK_SAGA,
     GET_BOOKS_GENERAL_LIST_SAGA,
     FAVORITE_BOOKS_LIST,
 } from './types';
@@ -8,7 +8,7 @@ import {
 
 export const onFetchSearchResult = (searchValue) => ({ type : FETCH_SEARCH_RESULT_SAGA , searchValue });
 
-export const onFetchSingleBook = (BOOKID) => ({ type: SINGLE_BOOK , BOOKID});
+export const onFetchSingleBook = (BOOKID) => ({ type: SINGLE_BOOK_SAGA , BOOKID});
 
 export const onGetBooksGeneralList = (booksType) => ({ type: GET_BOOKS_GENERAL_LIST_SAGA , booksType});
 

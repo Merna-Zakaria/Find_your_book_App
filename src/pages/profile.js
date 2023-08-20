@@ -25,14 +25,14 @@ const Profile = () => {
             <span>{`${user?.userName}@gmail.com`}</span>
           </p>
           <p>
-            <span className="lightText px-2">Age:</span> <span>{`29 years`}</span>
+            <span className="lightText px-2">Age:</span>{" "}
+            <span>{`29 years`}</span>
           </p>
           <p>
             <span className="lightText px-2">Hoppies:</span>{" "}
             <span>{`Reading, walking, Learning new languages`}</span>
           </p>
           <p>
-            {console.log('favoriteBooks', favoriteBooks)}
             <span className="lightText px-2">Favorite Books:</span>{" "}
             {favoriteBooks?.length
               ? favoriteBooks?.map((book) => book.volumeInfo.title)?.join(",  ")

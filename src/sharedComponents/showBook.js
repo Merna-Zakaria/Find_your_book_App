@@ -3,16 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { onFavoriteBooksList } from "../store/actions";
 import { useAuth } from "../hooks/useAuth";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const ShowBook = ({ book }) => {
   const { user } = useAuth();
+  const [User, setUser] = useLocalStorage("user", user);
   const [isFav, setIsFav] = useState(false);
   const {
     data: { favoriteBooks },
   } = useSelector((state) => state);
 
   const dispatch = useDispatch();
-  // console.log("book", book);
   const handleTrim = (value, trimedIndex) => {
     if (value && value?.length > trimedIndex) {
       return value.slice(0, trimedIndex) + "...";
@@ -23,22 +24,23 @@ const ShowBook = ({ book }) => {
 
   const handleFavoriteList = (book, isFav) => {
     let favList = [];
-    // console.log('isFav', isFav)
     if (favoriteBooks?.length) {
       if (isFav) {
         !favoriteBooks?.find((bk) => bk.id == book.id) &&
           (favList = [...favoriteBooks, book]);
-        console.log("true", favList);
+        setUser({ ...user, favoriteBooks: favList });
         return favList;
       } else {
         favoriteBooks?.find((bk) => bk.id == book.id) &&
           (favList = favoriteBooks?.filter((bk) => bk.id !== book.id));
-        console.log("false", favoriteBooks, favList);
+        setUser({ ...user, favoriteBooks: favList });
         return favList;
       }
     } else {
+      setUser({ ...user, favoriteBooks: favList });
       favList?.push(book);
     }
+    setUser({ ...user, favoriteBooks: favList });
     return favList;
   };
   return (
@@ -75,7 +77,11 @@ const ShowBook = ({ book }) => {
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
-              fill={isFav ? "#0dcaf0" : "black"}
+              fill={
+                isFav || user?.favoriteBooks?.find((bk) => bk.id == book.id)
+                  ? "#0dcaf0"
+                  : "black"
+              }
               class="bi bi-heart-fill"
               viewBox="0 0 16 16"
             >

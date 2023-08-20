@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   // call this function when you want to authenticate the user
-  const login =  (data) => {
+  const login = (data) => {
     setUser(data);
     navigate("/profile");
   };
@@ -27,15 +27,9 @@ export const AuthProvider = ({ children }) => {
     }),
     [user]
   );
-  console.log("value", value);
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = () => {
-  // const { user, login, logout } = useContext(AuthContext);
-  // console.log('user', user)
-  // return { user, login, logout };
-
-// console.log('useContext(AuthContext)', useContext(AuthContext))
-  return useContext(AuthContext)
+  return useContext(AuthContext);
 };
